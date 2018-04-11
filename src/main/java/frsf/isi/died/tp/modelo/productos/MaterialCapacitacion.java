@@ -28,6 +28,8 @@ public abstract class MaterialCapacitacion {
 	protected Double costo;
 	
 
+	
+
 	/**
 	 * Constructor por defecto
 	 */
@@ -62,6 +64,35 @@ public abstract class MaterialCapacitacion {
 	// AYUDA: para implementar estos metodos usar un atajo del IDE 
 	// elegir el menu "Source" --> "Generate getters y setters" y elegir alli que metodos generar.
 	
+	/**@return retorna el id del material de la capacitación*/
+	public Integer getId() {
+		return id;
+	}
+	
+	/**@param id del material de la capacitación*/
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	/**@return retorna el titulo del material de la capacitación*/
+	public String getTitulo() {
+		return titulo;
+	}
+
+	/**@param titulo del material de la capacitación*/
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	/**@return retorna el costo del material de la capacitación*/
+	public Double getCosto() {
+		return costo;
+	}
+
+	/**@param costo del material de la capacitación*/
+	public void setCosto(Double costo) {
+		this.costo = costo;
+	}
 
 	/**
 	 * El precio de un material se define segÃºn el tipo del material y toma como
@@ -87,6 +118,8 @@ public abstract class MaterialCapacitacion {
 	//	el mÃ©todo toString retorna un string que representa el material actual
 	//  retornando el titulo, y el precio 	 * usando el formato : 
 	// [Titulo: <titulo> ; Precio: <precio> ]
+	
+	public String toString(){return "[Titulo: "+this.titulo+" ; Precio: "+this.precio()+"]";}
 	
 	
 	// TODO 10: implementar Ordenable
