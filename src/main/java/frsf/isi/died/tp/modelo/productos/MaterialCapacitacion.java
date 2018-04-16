@@ -14,7 +14,7 @@ import frsf.isi.died.tp.util.Ordenable;
  * 
  * @author mdominguez
  */
-public abstract class MaterialCapacitacion {
+public abstract class MaterialCapacitacion implements Ordenable{
 	protected Integer id;
 	/**
 	 * Titulo del material
@@ -86,7 +86,7 @@ public abstract class MaterialCapacitacion {
 
 	/**@return retorna el costo del material de la capacitación*/
 	public Double getCosto() {
-		return costo;
+		return this.costo;
 	}
 
 	/**@param costo del material de la capacitación*/
@@ -123,5 +123,9 @@ public abstract class MaterialCapacitacion {
 	
 	
 	// TODO 10: implementar Ordenable
-
+	//La primera clase concreta que herede una clase abstracta, 
+	//que a su ve implementa una interface, 
+	//proporciona la implementación de los métodos abstractos heredados.
+	
+	public final int valor() { return this.precio().intValue();}
 }

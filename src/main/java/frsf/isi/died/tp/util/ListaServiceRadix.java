@@ -5,7 +5,7 @@ package frsf.isi.died.tp.util;
  * algoritmo Radix Sort - ordenamiento por residuos
  * 
  * Ejemplo ordenar el siguiente arreglo {315,601,385,218} 
- * En la primer iteracion ordeno por unidad por lo que la matriz "residuos" tendra la siguiente estructura 
+ * En la primera iteracion, ordeno por UNIDAD, por lo que la matriz "residuos" tendra la siguiente estructura 
  *  residuos= [ 
  *              [null...null], // i=0 
  *              [601,...null], // i=1
@@ -19,10 +19,10 @@ package frsf.isi.died.tp.util;
  *              [null...null], // i=9 
  *            ] 
  *
- * Luego se reordena el arreglo ordenable de segun aparecen los valores en la matriz 
- *  arregloOrdenable =  * {601,315,385,218}
+ * Luego se reordena el arreglo ordenable segun aparecen los valores en la matriz 
+ *  arregloOrdenable =  {601,315,385,218}
  *
- * En la primer iteracion ordeno por DECENA por lo que la matriz "residuos" tendra la siguiente estructura 
+ * En la segunda iteracion, ordeno por DECENA, por lo que la matriz "residuos" tendra la siguiente estructura 
  *  residuos= [ 
  *              [601...null], // i=0 
  *              [315,218,...null], // i=1
@@ -35,10 +35,10 @@ package frsf.isi.died.tp.util;
  *              [385...null], // i=8 
  *              [null...null], // i=9 
  *            ] 
- * Luego se  reordena el arreglo ordenable de segun aparecen los valores en la matriz
+ * Luego se  reordena el arreglo ordenable segun aparecen los valores en la matriz
  * arregloOrdenable = {601,315,218,385}
  * 
- * En la primer iteracion ordeno por CENTENA por lo que la matriz "residuos" tendra la siguiente estructura 
+ * En la tercera iteracion, ordeno por CENTENA, por lo que la matriz "residuos" tendra la siguiente estructura 
  *  residuos= [ 
  *              [null...null], // i=0 
  *              [null,...null], // i=1
@@ -51,8 +51,8 @@ package frsf.isi.died.tp.util;
  *              [null...null], // i=8 
  *              [null...null], // i=9 
  *            ] 
- * Luego se  reordena el arreglo ordenable de segun aparecen los valores en la matriz
- * arregloOrdenable = {218,315,385,601} y el arreglo está finalmente ordenado
+ * Luego, se  reordena el arreglo ordenable segun aparecen los valores en la matriz
+ * arregloOrdenable = {218,315,385,601} y el arreglo esta finalmente ordenado
  * 
  * @author mdominguez
  *
@@ -84,12 +84,22 @@ public class ListaServiceRadix extends ListasService {
 			// para la unidad es 1, para la decena 10, para la centena 100
 			// asi el numero 237 se puede descomponer en 2*100 + 3*10 + 7* 1
 			int peso = (int) Math.pow(10.0, i);
-
+			
 			for (Ordenable mat : this.arregloOrdenable) {
 				// TODO 11: IMPLEMENTAR el ALGORITMO que chequea el residuo 
 				// e inserta el elemento en la posicion de la matriz de residuos
 				// e incrementa el contador en cantidadPorFila en 1
+				if(!mat.equals(null))
+				{
+					int res=(mat.valor()/peso)%10;
+					if(cantidadPorFila[res]<10)
+					{
+						residuos[res][cantidadPorFila[res]]=mat;
+						cantidadPorFila[res]++;
+					}
+				}
 			}
+			
 			int indiceArregloOrdenado = 0;
 			for (int j = 0; j < 10; j++) {
 				for (int k = 1; k <= cantidadPorFila[j]; k++) {

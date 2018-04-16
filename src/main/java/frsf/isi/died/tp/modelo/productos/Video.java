@@ -5,7 +5,7 @@ public class Video extends MaterialCapacitacion{
 	public Integer duracion;
 	
 	//constructores
-	public Video(){}
+	public Video(){ super();}
 	
 	public Video(Integer id, String titulo)
 	{
