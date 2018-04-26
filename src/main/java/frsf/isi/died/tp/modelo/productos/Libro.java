@@ -109,7 +109,14 @@ public class Libro extends MaterialCapacitacion {
 	public Double precio() {
 		return new Double(super.getCosto()+(this.getPrecioCompra()*(1.0+(0.03*this.getPaginas()/150))));//TODO 05: implementar metodo abstract
 	}
-
 	
+	@Override
+	public boolean equals(Object o)
+	{
+		return o instanceof Libro && super.equals((MaterialCapacitacion)o);
+	}
+
+
+
 
 }

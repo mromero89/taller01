@@ -30,4 +30,10 @@ public class Video extends MaterialCapacitacion{
 		if(this instanceof Video) return true;
 		return false;
 	}
+	
+	@Override
+	public boolean equals(Object o)
+	{
+		return o instanceof Video && super.equals((MaterialCapacitacion)o);
+	}
 }

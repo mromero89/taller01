@@ -14,7 +14,7 @@ import frsf.isi.died.tp.util.Ordenable;
  * 
  * @author mdominguez
  */
-public abstract class MaterialCapacitacion implements Ordenable{
+public abstract class MaterialCapacitacion implements Ordenable, Comparable<MaterialCapacitacion>{
 	protected Integer id;
 	/**
 	 * Titulo del material
@@ -128,4 +128,19 @@ public abstract class MaterialCapacitacion implements Ordenable{
 	//proporciona la implementación de los métodos abstractos heredados.
 	
 	public final int valor() { return this.precio().intValue();}
+	
+	@Override
+	public boolean equals(Object o) {
+	return this instanceof MaterialCapacitacion && o instanceof MaterialCapacitacion 
+			&& this.getTitulo().equalsIgnoreCase(((MaterialCapacitacion)o).getTitulo());
+	}
+	
+	@Override
+	public int compareTo(MaterialCapacitacion mc) {
+		if(this.getTitulo().equalsIgnoreCase(mc.getTitulo()))
+			if(this.precio()>mc.precio()) return 1;
+			else if (this.precio()<mc.precio()) return -1;
+		    else return 0;
+		return this.getTitulo().compareToIgnoreCase(mc.getTitulo());
+	}
 }

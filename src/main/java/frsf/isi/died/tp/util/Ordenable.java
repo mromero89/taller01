@@ -12,4 +12,5 @@ public interface Ordenable {
 	 * @return ordenable
 	 */
 	public int valor();
+
 }
