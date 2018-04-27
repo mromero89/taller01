@@ -61,5 +61,14 @@ public class BibliotecaList implements Biblioteca{
 		}
 		
 	}
+	
+	@Override
+	public MaterialCapacitacion buscar(Integer precio) {
+	Collections.sort(this.materiales, (m1, m2) -> m1.getCosto()-m2.getCosto());
+	return buscadorBinario(…., ….., precio);
+	}
+	private MaterialCapacitacion buscadorBinario(Integer i,Integer f, Integer c){
+		return null;
+	}
 
 }
