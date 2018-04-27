@@ -2,6 +2,7 @@ package frsf.isi.died.tp.modelo;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 import frsf.isi.died.tp.modelo.productos.MaterialCapacitacion;
 
@@ -16,42 +17,48 @@ public class BibliotecaList implements Biblioteca{
 	@Override
 	public void agregar(MaterialCapacitacion mat) {
 		this.materiales.add(mat);
-		
 	}
 
 	@Override
 	public Integer cantidadMateriales() {
-		// TODO Auto-generated method stub
-		return null;
+	return new Integer(this.materiales.size());
 	}
 
 	@Override
 	public Integer cantidadLibros() {
-		// TODO Auto-generated method stub
-		return null;
+	int sum=0;
+	for(MaterialCapacitacion mc: materiales)
+	   if(mc.esLibro()) sum++;
+    return new Integer(sum);
 	}
 
 	@Override
 	public Integer cantidadVideos() {
-		// TODO Auto-generated method stub
-		return null;
+		int sum=0;
+		for(MaterialCapacitacion mc: materiales)
+		   if(mc.esVideo()) sum++;
+	    return new Integer(sum);
 	}
 
 	@Override
 	public Collection<MaterialCapacitacion> materiales() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.materiales;
 	}
 
 	@Override
 	public void imprimir() {
-		// TODO Auto-generated method stub
-		
+		for(MaterialCapacitacion mc: materiales)
+			System.out.println(mc);
 	}
 
 	@Override
 	public void ordenarPorPrecio(Boolean b) {
-		// TODO Auto-generated method stub
+		if(b)
+			Collections.sort(this.materiales);
+		else
+		{
+			Collections.sort(this.materiales, (m1,m2)->m1.precio().intValue()-m2.precio().intValue());
+		}
 		
 	}
 
