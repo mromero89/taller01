@@ -14,8 +14,7 @@ public class Video extends MaterialCapacitacion{
 	
 	public Video(Integer id, String titulo, Double costo,Integer duracion)
 	{
-		this(id,titulo);
-		super.setCosto(costo);
+		super(id,titulo,costo);
 		Video.costoPorSeg=0.15; this.duracion=duracion;
 	}
 	@Override
