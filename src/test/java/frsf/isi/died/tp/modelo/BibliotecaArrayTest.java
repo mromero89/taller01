@@ -77,7 +77,7 @@ public class BibliotecaArrayTest {
 		biblioteca.ordenarPorPrecio(true);
 		MaterialCapacitacion anterior = null;
 		for(MaterialCapacitacion mat : biblioteca.materiales()) {
-			assertTrue(anterior==null || anterior.precio()<mat.precio());
+			assertTrue(anterior==null || anterior.precio()<=mat.precio());
 			anterior = mat;
 		}
 	}
