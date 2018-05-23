@@ -1,7 +1,7 @@
 package frsf.isi.died.tp.modelo.productos;
 
 public class Video extends MaterialCapacitacion{
-	public static Double costoSeg;
+	public static Double costoPorSeg;
 	public Integer duracion;
 	
 	//constructores
@@ -15,11 +15,12 @@ public class Video extends MaterialCapacitacion{
 	public Video(Integer id, String titulo, Double costo,Integer duracion)
 	{
 		this(id,titulo);
-		Video.costoSeg=costo; this.duracion=duracion;
+		super.setCosto(costo);
+		Video.costoPorSeg=0.15; this.duracion=duracion;
 	}
 	@Override
 	public Double precio() {
-		return new Double(super.getCosto()+(this.duracion*Video.costoSeg));
+		return new Double(super.getCosto()+(this.duracion*Video.costoPorSeg));
 	}
 	@Override
 	public Boolean esLibro() {
