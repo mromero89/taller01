@@ -107,7 +107,9 @@ public class Libro extends MaterialCapacitacion {
 	 */
 	@Override
 	public Double precio() {
-		return new Double(super.getCosto()+(this.getPrecioCompra()*(1.0+(0.03*this.getPaginas()/150))));//TODO 05: implementar metodo abstract
+		Double calc=new Double(super.getCosto()+(this.getPrecioCompra()*(1.0+(0.03*this.getPaginas()/150))));//TODO 05: implementar metodo abstract
+		DecimalFormat dec = new DecimalFormat("#0.0");
+		return Double.valueOf(dec.format(calc));
 	}
 	
 	@Override
