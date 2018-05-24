@@ -57,18 +57,37 @@ public class BibliotecaList implements Biblioteca{
 			Collections.sort(this.materiales);
 		else
 		{
-			Collections.sort(this.materiales, (m1,m2)->m1.precio().intValue()-m2.precio().intValue());
+			Collections.sort(this.materiales, (m1,m2)->(int)(m1.precio()-m2.precio()));
 		}
 		
 	}
 	
 	@Override
-	public MaterialCapacitacion buscar(Integer precio) {
-	Collections.sort(this.materiales, (m1, m2) -> m1.getCosto()-m2.getCosto());
-	return buscadorBinario(…., ….., precio);
+	public MaterialCapacitacion buscar(Integer costo){
+	Collections.sort(this.materiales, (m1, m2) -> (int)(m1.getCosto()-m2.getCosto()));
+	
+	try {
+	return buscadorBinario(0,this.cantidadMateriales(), costo);
+	}catch(RuntimeException ex) {throw ex;}
+	
 	}
-	private MaterialCapacitacion buscadorBinario(Integer i,Integer f, Integer c){
-		return null;
+	
+	private MaterialCapacitacion buscadorBinario(Integer i,Integer f, Integer c) throws RuntimeException{
+		
+		if(f < i) throw new RuntimeException("Material de precio" + c +" no encontrado");
+		
+		int medio = (i + f)/2;
+		if (c < this.materiales.get(medio).getCosto())
+			return buscadorBinario(i,medio-1,c);
+		if (c > this.materiales.get(medio).getCosto())
+			return buscadorBinario(medio + 1,f,c);
+		if (c==this.materiales.get(medio).getCosto().intValue())
+			{
+			//System.out.println("encontrado");
+			return this.materiales.get(medio);
+			}
+		
+		throw new RuntimeException("Material de precio" + c +" no encontrado");
 	}
 
 }
